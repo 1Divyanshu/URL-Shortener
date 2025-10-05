@@ -15,10 +15,6 @@ const Navbar = () => {
           <Link href={"/"}>Shortify</Link>
         </div>
 
-        {/* <div>
-          <button><Image className='invert-100 w-10 mr-3 ' src={"/menu.png"} width={10} height={10}/></button>
-
-        </div> */}
 
         <button className='mr-3 md:hidden' onClick={() => setOpen(!open)}>
           {open ? "X" : "☰"}
