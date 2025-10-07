@@ -89,7 +89,7 @@ const Shorten = () => {
 
     return (
         <>
-            <div className='mx-auto  bg-blue-100 max-w-lg my-16 p-8 rounded-2xl flex flex-col gap-4'>
+            <div className='md:mx-auto mx-4  bg-blue-100 max-w-lg my-16 p-8 rounded-2xl flex flex-col gap-4'>
                 <h1 className='font-bold text-2xl'>Generate your short URLs</h1>
                 <div className='flex flex-col gap-2'>
 
@@ -107,7 +107,8 @@ const Shorten = () => {
             </div>
 
             {/* Table to display previosly stored links  */}
-            <table className="w-[80%] text-left border-collapse border border-gray-300 mx-auto">
+            <div className='overflow-x-auto'>
+            <table className="w-[80%] text-left border-collapse border border-gray-300 md:mx-auto mx-4">
                 <thead>
                     <tr className="bg-gray-100">
                         <th className="p-2 border border-gray-300 text-center">Original URL</th>
@@ -147,9 +148,10 @@ const Shorten = () => {
                     ))}
                 </tbody>
             </table>
-
+            </div>
 
         </>
+
     )
 }
 

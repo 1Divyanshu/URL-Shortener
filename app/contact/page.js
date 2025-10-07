@@ -1,19 +1,55 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const Contact = () => {
+
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page from re-loading
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+        e.target.reset();
+      } else {
+        setStatus("Something went wrong. Try again.");
+      }
+    } catch (err) {
+      setStatus("Network error. Try again.");
+    }
+  };
+  
+
   return (
    
       <div className='bg-blue-100'>
 
         <section className='grid grid-rows-2 md:grid md:grid-cols-2 md:grid-rows-none '>
+          <form action="" onSubmit={handleSubmit}>
           <div className='mx-auto  bg-blue-200 w-[90vw] md:w-[30vw] my-16 p-8 rounded-2xl flex flex-col gap-6'>
-            <input className='p-4 px-4 bg-white rounded-lg focus:outline-blue-500' type="text" placeholder='Name' />
-            <input className='p-4 px-4 bg-white rounded-lg focus:outline-blue-500' type="text" placeholder='Email' />
-            <textarea className='pt-2 pb-8 px-4 bg-white rounded-lg focus:outline-blue-500 scroll-auto min-h-20' type="text" placeholder='Message' />
+            <input className='p-4 px-4 bg-white rounded-lg focus:outline-blue-500' type="text" placeholder='Name' id='name' />
+
+            <input className='p-4 px-4 bg-white rounded-lg focus:outline-blue-500' type="text" placeholder='Email' id='email' />
+            <textarea className='pt-2 pb-8 px-4 bg-white rounded-lg focus:outline-blue-500 scroll-auto min-h-20' type="text" placeholder='Message'  id='message'/>
             <button className='rounded-lg p-2 mt-3 bg-black text-white cursor-pointer'>Contact Us</button>
           </div>
+            </form>
           <div className='flex justify-start relative'>
             <Image alt='an image of a guy' className='mix-blend-darken' src={"/5118756.jpg"} fill={true} />
           </div>

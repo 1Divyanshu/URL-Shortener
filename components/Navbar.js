@@ -26,10 +26,10 @@ const Navbar = () => {
           <Link href={"/shorten"}><li>Shorten</li></Link>
           <Link href={"/contact"}><li>Contact Us</li></Link>
 
-          <li className='md:flex gap-5 hidden'>
+          {/* <li className='md:flex gap-5 hidden'>
             <Link className='rounded-lg p-2 bg-blue-600' href={"/shorten"}><button className='cursor-pointer'>Try Now</button></Link>
             <Link className='rounded-lg p-2 bg-blue-600' href={"/github"}><button className='cursor-pointer'>GitHub</button></Link>
-          </li>
+          </li> */}
         </ul>
       </div>
 
